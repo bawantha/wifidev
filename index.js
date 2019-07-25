@@ -10,7 +10,7 @@ app.set('view engine','pug');
 app.set('views','./views');
 
 // set up routes
-app.use(authRoutes);
+app.use('/auth',authRoutes);
 
 
 // GET
