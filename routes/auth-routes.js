@@ -1,11 +1,12 @@
 const router=require('express').Router();
-
+const pasport=require('passport');
 router.get("/login",(req,res)=>{
     res.render('login');
 })
 
-router.get("/google",(req,res)=>{
-    res.send("login with google");
-})
+// passport authentication
+router.get("/google",pasport.authenticate('google',{
+    scope:['profile']
+}))
 
 module.exports=router;
