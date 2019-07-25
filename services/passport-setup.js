@@ -7,7 +7,8 @@ passport.use(
     clientID:keys.google.clientID,
     clientSecret:keys.google.clienetSecret,
 
-}, () => {
+}, (accessToken, refreshToken, profile, cb) => {
     // passport callback functionm
+    console.log("Thada kora");
 })
 );
