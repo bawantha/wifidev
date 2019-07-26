@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20');
 const keys = require('../config/keys');
 const Customer = require('../models/customer-model');
 
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -18,7 +19,7 @@ passport.use(
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
 
-    }, (accessToken, refreshToken, profile, cb) => {
+    }, (accessToken, refreshToken, profile, done) => {
 
         Customer.findOne({
             googleID: profile.id
@@ -35,7 +36,7 @@ passport.use(
                 }).save().then((nc) => {
                     done(null,nc);
                     // This is the where user should let the internet access
-                    console.log('new user created' + nc);
+                    
                 })
             }
         })
