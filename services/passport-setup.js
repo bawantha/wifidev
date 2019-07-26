@@ -9,11 +9,22 @@ passport.use(
         clientSecret: keys.google.clientSecret
 
     }, (accessToken, refreshToken, profile, cb) => {
-        new Customer({
-            customerName:profile.displayName,
-            googleID:profile.id
-        }).save().then((nc)=>{
-           console.log ('new user created'+nc);
+
+        Customer.findOne({
+            googleID: profile.id
+        }).then((currentCustomer) => {
+            if (currentCustomer) {
+                // customer already registerd with our service
+            } else {
+                // new Customer
+                new Customer({
+                    customerName:profile.displayName,
+                    googleID:profile.id
+                }).save().then((nc)=>{
+                   console.log ('new user created'+nc);
+                }) 
+            }
         })
+
     })
 );
