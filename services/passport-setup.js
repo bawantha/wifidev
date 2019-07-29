@@ -26,8 +26,6 @@ passport.use(
         }).then((currentCustomer) => {
             if (currentCustomer) {
                 done(null, currentCustomer);
-                // This is the point where user should let the internet access
-                // customer already registerd with our service
             } else {
                 // new Customer
                 new Customer({
