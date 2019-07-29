@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const passportservices = require('./services/passport-setup');
 const mongoose = require('mongoose');
+
+mongoose.set('useFindAndModify', false);
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
