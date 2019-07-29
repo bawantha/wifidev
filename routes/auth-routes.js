@@ -36,8 +36,19 @@ router.get("/google", passport.authenticate('google', {
 
 router.get("/google/redir", passport.authenticate('google', { failureRedirect: '/login' }),
   function (req, res) {
-    // Successful authentication, redirect home.
-    res.send(req.user);
+    Customer.findByIdAndUpdate(
+      { _id: req.user.id }, 
+      { $push: { shopIDs:req.query.gatewayname} },
+     function (error, success) {
+           if (error) {
+               console.log(error);
+           } else {
+               console.log(success);
+           }
+       });
+
+       res.send('yolla');
+          // Successful authentication, redirect home.
   })
 
 module.exports = router;
