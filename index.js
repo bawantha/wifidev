@@ -7,6 +7,7 @@ mongoose.set('useFindAndModify', false);
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const ndsvaribles = require('./config/nds');
 
 
 
@@ -17,7 +18,6 @@ let _authaction = "";             // call back url for authenticated user
 let _gatewayname = "";            // GATEWAYNAME can be get as uniqure shoplocation
 let _tok = "";                    // to authenticate user
 let _redir = "";                  // redirect URL depend on platform( android, iOS)
-
 
 // create cookies
 app.use(cookieSession({
@@ -51,11 +51,11 @@ app.use('/auth', authRoutes);
 
 // GET
 app.get('/', (req, res) => {
-    _authaction = req.query['authaction'];
-    _tok = req.query['tok'];
-    _gatewayname = req.query['gatewayname'];
-    _redir = req.query['redir'];
-    res.render('home',{gatewayname:_gatewayname});
+    ndsvaribles._authaction = req.query['authaction'];
+    ndsvaribles._tok = req.query['tok'];
+    ndsvaribles._gatewayname = req.query['gatewayname'];
+    ndsvaribles._redir = req.query['redir'];
+    res.render('home',);
 })
 
 

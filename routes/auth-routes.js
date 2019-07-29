@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 const Customer=require('../models/customer-model');
+const ndsV=require('../config/nds');
 router.get("/login", (req, res) => {
   res.render('login');
 })
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
     // redirect to auth URL
     Customer.findByIdAndUpdate(
       { _id: req.user.id }, 
-      { $push: { shopIDs:req.query.gatewayname} },
+      { $push: { shopIDs:ndsV._gatewayname} },
      function (error, success) {
            if (error) {
                console.log(error);
@@ -38,7 +39,7 @@ router.get("/google/redir", passport.authenticate('google', { failureRedirect: '
   function (req, res) {
     Customer.findByIdAndUpdate(
       { _id: req.user.id }, 
-      { $push: { shopIDs:req.query.gatewayname} },
+      { $push: { shopIDs:ndsV._gatewayname} },
      function (error, success) {
            if (error) {
                console.log(error);
