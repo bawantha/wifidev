@@ -10,15 +10,6 @@ const passport = require('passport');
 const ndsvaribles = require('./config/nds');
 
 
-
-
-
-
-let _authaction = "";             // call back url for authenticated user
-let _gatewayname = "";            // GATEWAYNAME can be get as uniqure shoplocation
-let _tok = "";                    // to authenticate user
-let _redir = "";                  // redirect URL depend on platform( android, iOS)
-
 // create cookies
 app.use(cookieSession({
     maxAge: 365 * 24 * 60 * 60 * 1000,
