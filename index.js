@@ -8,7 +8,7 @@ const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const ndsvaribles = require('./config/nds');
-
+let PORT =process.env.PORT || 3000;
 
 // create cookies
 app.use(cookieSession({
@@ -51,6 +51,6 @@ app.get('/', (req, res) => {
 
 
 //set ports
-app.listen(process.env.PORT || 3000, () => {
+app.listen(PORT, () => {
     console.log("app on port 3000");
 })
