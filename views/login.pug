@@ -6,4 +6,7 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Chose Type
     body
-        a(href="/auth/google") Google
+        form(action="/auth/phone", method="get")
+            label(for="phonenumber") etner phone number
+            input(type="text" name="phonenumber")
+            input(type="submit")
