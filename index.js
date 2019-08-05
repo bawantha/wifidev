@@ -6,6 +6,11 @@ mongoose.set('useFindAndModify', false);
 // impors routs
 const authRoutes = require('./routes/auth-routes');
 
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 // set views engine
 app.set('view engine', 'pug');
 app.set('views', './views');

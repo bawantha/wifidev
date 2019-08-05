@@ -1,23 +1,45 @@
 const router = require('express').Router();
+const {numberAuth}=require('./middleware/numberAuth')
+const {updateCustomer}=require('./middleware/updateCustomer')
+
 let twilio_otp = require('../services/twilio-otp');
 const customer = require('../models/customer-model');
 const conditional = require('express-conditional-middleware')
 const nds = require('../config/nds');
-router.get("/login", (req, res) => {
+router.get("/", (req, res) => {
     res.render('login');
 })
 
-router.get("/phone",
-    (req, res, next) => {
-        customer.findOne({ customerPhoneNumber: req.query.phonenumber }, (err, data) => {
+
+router.post('/',numberAuth , (req,res)=>{
+    res.send("Ok");
+})
+
+
+
+
+/*
+// FInd csutomer
+
+customer.findOne({ customerPhoneNumber: req.query.phonenumber }, (err, data) => {
             if (data == null) {
                 var otp = twilio_otp.otp;
                 twilio_otp.sendOTP(req.query.phonenumber, otp);
-                
+                res.locals=otp;
                 // haven't registered before
-               res.redirect()
+                res.redirect('/')
             } else {
-                // registered before update the shopIds
+               
+            }
+
+
+
+
+
+
+
+
+ // registered before update the shopIds
                 customer.findByIdAndUpdate(
                     { _id: data.id },
                     { $push: { shopIds: nds._gatewayname } },
@@ -33,13 +55,8 @@ router.get("/phone",
                         }
                     }
                 )
-            }
-        }
 
-        )
-    }
-
-)
+*/
 
 
 
