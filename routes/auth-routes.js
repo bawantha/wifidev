@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {numberAuth}=require('./middleware/numberAuth')
-const {updateCustomer}=require('./middleware/updateCustomer')
+const {updateCustomerInfo}=require('./middleware/updateCustomer')
 
 let twilio_otp = require('../services/twilio-otp');
 const customer = require('../models/customer-model');
@@ -11,8 +11,10 @@ router.get("/", (req, res) => {
 })
 
 
-router.post('/',numberAuth , (req,res)=>{
-    res.send("Ok");
+router.post('/',numberAuth,updateCustomerInfo , (req,res)=>{
+    let {authURI}=res.locals;
+    res.redirect(authURI);
+    
 })
 
 

@@ -17,7 +17,7 @@ module.exports = {
                     customerPhoneNumber: pn + ""
                 })
                 newCustomer.save();
-
+                res.locals.pn = pn + "";
                 next();
             }
 
@@ -32,6 +32,8 @@ module.exports = {
                     res.render('otp-enter')
 
                 } else {
+                    res.locals.pn = pn + "";
+
                     next();
 
                 }

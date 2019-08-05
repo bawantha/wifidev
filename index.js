@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+const nds = require('./config/nds');
+
 mongoose.set('useFindAndModify', false);
 // impors routs
 const authRoutes = require('./routes/auth-routes');
@@ -33,6 +35,10 @@ app.use('/auth', authRoutes);
 
 // GET
 app.get('/', (req, res) => {
+    nds._authaction=req.query.authaction;
+    nds._gatewayname=req.query.gatewayname;
+    nds._redir=req.query.redir;
+    nds._tok=req.query.tok;
     res.render('home');
 })
 
