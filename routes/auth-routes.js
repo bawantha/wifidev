@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 
 router.post('/',numberAuth,updateCustomerInfo , (req,res)=>{
     let {authURI}=res.locals;
-    res.redirect(authURI);
+    res.send(authURI)
     
 })
 

@@ -1,0 +1,7 @@
+{
+    "appService.zipIgnorePattern": [
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/a293fb7e-41a8-42fe-a4ed-5eb41e55199d/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/wifi-dev-mitra",
+    "appService.deploySubpath": ""
+}

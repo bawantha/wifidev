@@ -44,6 +44,6 @@ app.get('/', (req, res) => {
 
 
 //set ports
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("app on port 3000");
 })
